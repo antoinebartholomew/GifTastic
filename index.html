@@ -7,34 +7,42 @@
           <title> GifTastic - API Use </title>
   </head>
   <body>
+
+      <div class="container">  <!--  open the largest container   -->
         <div class="jumbotron jumbotron-fluid">
-         <div class="container">
            <h1 class="display-3">Welcome to GifTastic Enjoy!   </h1>
-         </div>
        </div>
 
-       <button data-animal="cat">meow</button>
-       <button data-animal="dog">woof</button>
-       <button data-animal="bird">chirp</button>
+       <button data-animal="cat">Cat Gifys</button>
+       <!-- <button data-animal="dog">woof</button>
+       <button data-animal="bird">chirp</button> -->
 
-       <div id="gifs-appear-here"> </div>
+
 
        <!-- Movies will get dumped here -->
        <div id="movies-view"></div>
 
        <form id="movie-form">
-         <label for="movie-input"> Add Animal </label>
+         <label for="movie-input"> Add a Gif Button </label>
          <input type="text" id="movie-input"><br>
 
          <!-- Button triggers new movie to be added -->
          <input id="add-movie" type="submit" value=" Submit ">
        </form>
 
-    <!-- Link JQuery Library -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Link Javascript File -->
-    <script type="text/javascript" src="Assets/JavaScript/app.js"></script>
-      </body>
+       <div class="container">
+            <div class="row">
+              <div id="gifs-appear-here" class="col col-sm-"> </div>
+            </div>
+       </div>
+
+    </div>  <!--  close the largest container   -->
+
+        <!-- Link JQuery Library -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Link Javascript File -->
+        <script type="text/javascript" src="Assets/JavaScript/app.js"></script>
+  </body>
   </body>
 </html>

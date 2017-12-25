@@ -2,3 +2,17 @@
 
   float: right;
 }
+
+#add-movie{
+  border: #000 5px solid;
+  padding: 3px 5px 5px 5px;
+  background: rgba(225, 225, 225, 0.5);
+
+}
+
+#movie-input{
+  border: Blue 3px solid;
+  padding: 3px 5px 5px 5px;
+  background: rgba(225, 225, 225, 0.5);
+
+}
