@@ -1,23 +1,20 @@
-#movie-form{
 
-  float: right;
-}
-
-#add-movie{
-  border: #000 5px solid;
-  padding: 3px 5px 5px 5px;
-  background: rgba(225, 225, 225, 0.5);
-
-}
-
-#movie-input{
-  border: Blue 3px solid;
-  padding: 3px 5px 5px 5px;
-  background: rgba(225, 225, 225, 0.5);
-
-}
 
 body{
-  
+
   background-color: gray;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.2);
+  max-width: 1000px;
+  width: 100%;
+}
+
+#Giphy{
+  margin-left: 50px;
+  border: Blue 3px solid;
+  padding: 13px 15px 15px 15px;
+  background: rgba(225, 225, 225, 0.5);
+
 }

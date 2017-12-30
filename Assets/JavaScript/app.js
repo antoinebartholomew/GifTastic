@@ -1,112 +1,87 @@
-// https://stackoverflow.com/questions/17724017/using-jquery-to-build-table-rows-from-ajax-response-json
-
-//create an array of strings, each one related to a topic that interests you. Save it to a variable called topics.
+//https://stackoverflow.com/questions/44298501/how-to-pause-and-start-gif-using-jquery-ajax
 var topics = ["Porsche", "BMW", "Tesla"];
-var response;
+// Function for displaying additoinal topics to the page as  data button
+  function renderButtons() {
 
-  function displayCarInfo() {
+    $("#topics").empty();
 
-
+    for (var i = 0; i < topics.length; i++) {
+      $("#topics").append('<button class="tag-buttons btn btn-primary">' + topics[i] + '</button>');
+    }
 
   }
 
-//Try using a loop that appends a button for each string in the array
+  // Add tags function //
 
-        //Function for displaying movie data
-        function renderButtons() {
+$(document).on('click', '#addTopics', function(event) {
 
-          // Deleting the movie buttons prior to adding new movie buttons
-          // (this is necessary otherwise we will have repeat buttons)
-          $("#movies-view").empty();
+  event.preventDefault();
 
-          // Looping through the array of movies
-          for (var i = 0; i < topics.length; i++) {
+  var newTopics = $("#Giphy").val().trim();
+  topics.push(newTopics);
 
-            // Then dynamicaly generating buttons for each movie in the array.
-            // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
-            var a = $("<button>");
-            // Adding a class
-            a.addClass("car");
-            // Adding a data-attribute with a value of the movie at index i
-            a.attr("data-name", topics[i]);
-            // Providing the button's text with a value of the movie at index i
-            a.text(topics[i]);
-            // Adding the button to the HTML
-            $("#movies-view").append(a);
-          }
-        }
-        //
-        // This function handles events where one button is clicked
-        $("#add-movie").on("click", function(event) {
-          // event.preventDefault() prevents the form from trying to submit itself.
-          // We're using a form so that the user can hit enter instead of clicking the button if they want
-          event.preventDefault();
+  $("#topics").append('<button class="tag-buttons btn btn-primary">' + newTopics + '</button>');
 
-          // This line will grab the text from the input box
-          var car = $("#movie-input").val().trim();
-          // The movie from the textbox is then added to our array
-          topics.push(car);
+});
 
-          // calling renderButtons which handles the processing of our movie array
-          renderButtons();
-        });
+// Tag button function //
 
-        // Adding a click event listener to all elements with a class of "movie"
-        //$(document).on("click", ".topics", displayCarInfo);
+$(document).on('click', '.tag-buttons', function(event) {
 
-        // Calling the renderButtons function to display the intial buttons
-        renderButtons();
+  // Keeps page from reloading //
+  event.preventDefault();
 
+  var type = this.innerText;
+  console.log(this.innerText);
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + window.encodeURI(type) + "&api_key=glo3Suv6j1x7pl2Y2A1ITmD4QnryJQ3i&l&rating=pg-13&limit=10";
+    //var queryURL = "https://api.giphy.com/v1/gifs/trending?q=" + car + "&api_key=glo3Suv6j1x7pl2Y2A1ITmD4QnryJQ3i&l&rating=pg-13&limit=5";
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).done(function(response) {
+    console.log(queryURL);
+    console.log(response);
 
-//When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
+    // storing the data from the AJAX request in the results variable
+    var results = response.data;
 
-        // Adding click event listen listener to all buttons
-        $("button").on("click", function() {
-          // Grabbing and storing the data-animal property value from the button
-          var car = $(this).attr("cars");
+    for (var i = 0; i < response.data.length; i++) {
 
-          // Constructing a queryURL using the animal name  https://github.com/Giphy/GiphyAPI/issues/1
-          var queryURL = "https://api.giphy.com/v1/gifs/trending?q=" + car + "&api_key=glo3Suv6j1x7pl2Y2A1ITmD4QnryJQ3i&l&rating=pg-13&limit=5";
+      // Creating and storing a div tag
+      var carDiv = $("<div>");
+      // Creating a paragraph tag with the result item's rating
+      var p = $("<p>").text("Rating: " + results[i].rating);
+      var p2 = $("<p>").text("Plot: " + results[i].plot);
+      var p3 = $("<p>").text("Released: " + results[i].released);
+      // var pThree = $("<p>").text("Plot: " + plot);
 
-          // Performing an AJAX request with the queryURL
-          $.ajax({
-              url: queryURL,
-              method: "GET"
-            }).done(function(response) {
-              console.log(queryURL);
-              console.log(response);
-              //['Rating']['Plot']['Released']
+      // Appending the paragraph and image tag to the carDiv
 
-              // storing the data from the AJAX request in the results variable
-              var results = response.data;
-
-              // Looping through each result item
-              for (var i = 0; i < results.length; i++) {
-
-                // Creating and storing a div tag
-                var carDiv = $("<div>");
-
-                // Creating a paragraph tag with the result item's rating
-                var p = $("<p>").text("Rating: " + results[i].rating);
-                var p2 = $("<p>").text("Plot: " + results[i].plot);
-                var p3 = $("<p>").text("Released: " + results[i].released);
-                // var pThree = $("<p>").text("Plot: " + plot);
+      //carDiv.append(carGifImage);
+      carDiv.prepend(p);
+      carDiv.prepend(p2);
+      carDiv.prepend(p3);
 
 
-                // Creating and storing an image tag
-                var carGifImage = $("<img>");
-                // Setting the src attribute of the image to a property pulled off the result item
-                carGifImage.attr("src", results[i].images.fixed_height.url);
 
-                // Appending the paragraph and image tag to the animalDiv
+      $("#giphyPhoto").append('<img class="gif" src="' + response.data[i].images.fixed_height_still.url + '">');
+    }
+  });
 
-                carDiv.append(carGifImage);
-                carDiv.prepend(p);
-                carDiv.prepend(p2);
-                carDiv.prepend(p3);
+  $("#photo").empty();
 
-                // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
-                $("#gifs-appear-here").prepend(carDiv);
-              }
-            });
-        });
+});
+renderButtons();
+
+$('body').on('click', '.gif', function() {
+    	var src = $(this).attr("src");
+      if($(this).hasClass('playing')){
+         //stop
+         $(this).attr('src', src.replace(/\.gif/i, "_s.gif"))
+         $(this).removeClass('playing');
+      } else {
+        //play
+        $(this).addClass('playing');
+        $(this).attr('src', src.replace(/\_s.gif/i, ".gif"))
+      }
+    });

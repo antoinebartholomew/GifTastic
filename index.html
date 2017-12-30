@@ -9,39 +9,47 @@
   <body>
 
       <div class="container">  <!--  open the largest container   -->
-        <div class="jumbotron jumbotron-fluid">
-           <h1 class="display-3">Welcome to GifTastic   </h1>
-
-           <label form="movie-input" > Add a Gif Button </label>
-           <input type="text" id="movie-input">
-           <input id="add-movie" cars="mustang" type="submit" value=" Submit ">
-       </div>
-
-       <!-- <button cars="mustang">Car Gifys</button>
-       <button cars="bmw">BMW </button>
-       <button cars="bird">chirp</button> -->
+          <div class="jumbotron jumbotron-fluid">
+             <h1 class="display-3">Welcome to GifTastic   </h1>
 
 
+              <div class="row text-center category-row">
+                <input type="" name="" id="Giphy"><button class="btn btn-secondary" id="addTopics">Add Category</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;
+                   <div class="row text-center tag-row" id="topics"></div>
+              </div>
+              <!-- <label form="movie-input" > Add a Gif Button </label>
+             <input type="text" id="movie-input">
+             <input id="add-movie" cars="mustang" type="submit" value=" Submit "> -->
+         </div>
+         <!-- the giphyPhoto div needs to become a grid... -->
+         <div class="container">
+           <div id="giphyPhoto"></div>
+         </div>
 
-       <!-- Movies will get dumped here -->
-       <div id="movies-view"></div>
+         <!-- Movies will get dumped here -->
+         <!-- <div id="movies-view"></div>
 
-       <form id="movie-form">
-
-
-         <!-- Button triggers new movie to be added -->
+         <form id="movie-form">
 
 
-       </form>
+         </form>
 
-       <br><br><br>
-       <div class="container">
-            <div class="row">
-              <div id="gifs-appear-here" class="col col-sm-"> </div>
-            </div>
-       </div>
+         <br><br><br>
 
-    </div>  <!--  close the largest container   -->
+         <div class="container">
+              <div class="row">
+                <table>
+                    <tr>
+                        <th>Image</th>
+                        <th>Rating</th>
+                        <th>Plot</th>
+                        <th>Released</th>
+                    </tr>
+                </table>
+                <div id="gifs-appear-here" class="col col-sm-"> </div>
+              </div>
+        </div> -->
+      </div>  <!--  close the largest container   -->
 
         <!-- Link JQuery Library -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
