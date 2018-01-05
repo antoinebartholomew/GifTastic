@@ -1,5 +1,5 @@
 //https://stackoverflow.com/questions/44298501/how-to-pause-and-start-gif-using-jquery-ajax
-var topics = ["Porsche", "BMW", "Tesla"];
+var topics = ["Porsche", "BMW", "Mercedes", "Tesla", "Bentley"];
 // Function for displaying additoinal topics to the page as  data button
   function renderButtons() {
 
@@ -51,16 +51,16 @@ $(document).on('click', '.tag-buttons', function(event) {
       var carDiv = $("<div>");
       // Creating a paragraph tag with the result item's rating
       var p = $("<p>").text("Rating: " + results[i].rating);
-      var p2 = $("<p>").text("Plot: " + results[i].plot);
-      var p3 = $("<p>").text("Released: " + results[i].released);
+      // var p2 = $("<p>").text("Plot: " + results[i].plot);
+      // var p3 = $("<p>").text("Released: " + results[i].released);
       // var pThree = $("<p>").text("Plot: " + plot);
 
       // Appending the paragraph and image tag to the carDiv
 
       //carDiv.append(carGifImage);
       carDiv.prepend(p);
-      carDiv.prepend(p2);
-      carDiv.prepend(p3);
+      // carDiv.prepend(p2);
+      // carDiv.prepend(p3);
 
 
 
